@@ -10,12 +10,18 @@ class GossipsController < ApplicationController
   # GET /gossips/1
   # GET /gossips/1.json
   def show
+    @comment = Comment.new
+    @comments = Comment.all
+    puts 'coucou'
+    puts @comments
+    puts 'params'
+    puts params
   end
 
   # GET /gossips/new
   def new
     @gossip = Gossip.new
-    @comment = Comment.new
+   
   end
 
   # GET /gossips/1/edit

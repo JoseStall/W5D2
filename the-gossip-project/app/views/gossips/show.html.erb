@@ -1,17 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Anonymous author:</strong>
-  <%= @gossip.anonymous_author %>
+	<strong>Anonymous author:</strong>
+	<%= @gossip.anonymous_author %>
 </p>
 
 <p>
-  <strong>Content:</strong>
-  <%= @gossip.content %>
+	<strong>Content:</strong>
+	<%= @gossip.content %>
 </p>
 
-<%= link_to 'Edit', edit_gossip_path(@gossip) %> |
-<%= link_to 'Back', gossips_path %>
+<td> <%= link_to 'Edit', edit_gossip_path(@gossip) %> </td>|
+<td> <%= link_to 'Back', gossips_path %> </td>
 
-<%= link_to 'Creer un nouveau commentaire pour cet utilisateur', newid_path(@gossip.id) %>
+<br><%= link_to 'Creer un nouveau commentaire pour cet utilisateur', newid_path(@gossip.id), class: 'btn ' %> </br>
 
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+      <p>	<strong> Anonymous commentor </strong>
+        <td><%= comment.anonymous_commentor %></td></p>
+       <strong>Comment body</strong>
+       <p> <td><%= comment.body %></td></p>
+       <p> <td><%= link_to 'Show', comment %></td></p>
+       <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+       <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+      </tr>
+    <% end %>
+  </tbody>
